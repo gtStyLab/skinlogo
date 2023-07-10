@@ -3,7 +3,7 @@ breed [corynes coryne] ;; define the corynebacteria breed
 breed [acines acine] ;; define the acineonibacteria breed
 breed [subtils subtil];; define the Bacillus subtilis breed
 turtles-own [age energy remAttempts]
-patches-own [glucose ser thr gly ala his pro leuiso val FA phetyr mal abx tox apply avaMetas]
+patches-own [glucose ser thr gly ala his pro leuiso val FA phetyr mal abx avaMetas]
 globals [ negMeta testState result]
 
 
@@ -71,8 +71,6 @@ to setup
     set phetyr 295
     set mal 0
     set abx 0
-    set tox 0
-    set apply 0
   ]
 
   ;; Setup for stop if negative metas
@@ -141,8 +139,6 @@ end
 to checkAbx
   if ticks mod tickAbxInflow = 0 and ticks != 0[
     set abx (abx + inConcAbx) ;ug/cm2
-;    set tox (tox + inConcTox)
-;    set apply (apply + inConcApply)]
   ]
 end
 to AbxAction
@@ -798,7 +794,7 @@ INPUTBOX
 614
 390
 inConcSubtils
-0.0
+50000.0
 1
 0
 Number
@@ -842,7 +838,7 @@ INPUTBOX
 739
 212
 tickBacInflow
-30000.0
+3000.0
 1
 0
 Number
@@ -864,7 +860,7 @@ INPUTBOX
 315
 392
 initNumSubtils
-3000.0
+0.0
 1
 0
 Number
@@ -1062,10 +1058,10 @@ inConcAbx
 Number
 
 MONITOR
-1085
-459
-1142
-504
+772
+469
+829
+514
 abx
 sum [abx] of patches
 17
@@ -1073,21 +1069,10 @@ sum [abx] of patches
 11
 
 INPUTBOX
-312
-333
-467
-393
-inConcTox
-0.0
-1
-0
-Number
-
-INPUTBOX
-314
-272
-469
-332
+315
+211
+470
+271
 tickAbxInflow
 30000.0
 1
@@ -1095,43 +1080,10 @@ tickAbxInflow
 Number
 
 INPUTBOX
-688
-295
-770
-355
-inConcApply
-0.0
-1
-0
-Number
-
-MONITOR
-963
-459
-1020
-504
-apply
-sum [apply] of patches
-17
-1
-11
-
-MONITOR
-1024
-460
-1081
-505
-tox
-sum [tox] of patches
-17
-1
-11
-
-INPUTBOX
-616
-216
-689
-276
+317
+271
+390
+331
 inConcMal
 0.0
 1
